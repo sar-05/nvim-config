@@ -40,7 +40,7 @@ mkdir -p "$config_dir"
 
 # Install nerd Fonts
 mkdir -p ~/.local/share/fonts
-wget -P "${XDG_DATA_HOME:-$HOME/.local/share/}/fonts" https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip \
+wget -P "${XDG_DATA_HOME:-$HOME/.local/share}/fonts" https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip \
 && cd ~/.local/share/fonts \
 && unzip FiraCode.zip \
 && rm FiraCode.zip \
