@@ -9,6 +9,12 @@ if ! command -v nvim > /dev/null; then
     exit 1
 fi
 
+# Check if wget is installed
+if ! command -v wget > /dev/null; then
+    echo "ERROR: No wget installation found" >&2
+    exit 1
+fi
+
 # Check for optional dependencies
 dependencies=('yazi' 'tmux' 'kitty')
 missing_dependencies=()
@@ -31,6 +37,14 @@ fi
 # Create config directory if it doesn't exist
 config_dir="${XDG_CONFIG_HOME:-$HOME/.config}"
 mkdir -p "$config_dir"
+
+# Install nerd Fonts
+wget -P https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip \
+&& mkdir -p ~/.local/share/fonts \
+&& cd ~/.local/share/fonts \
+&& unzip FiraCode.zip \
+&& rm FiraCode.zip \
+&& fc-cache -fv
 
 # Create symlink
 if ln -sfn "$(pwd)/nvim" "$config_dir/nvim"; then
